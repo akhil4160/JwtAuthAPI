@@ -2,18 +2,17 @@ package com.akhil.jwtauthapi.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Component;
 import javax.crypto.spec.SecretKeySpec;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Date;
 
 @Component
 public class JwtUtil {
 
-    private final String SECRET_KEY =
-            "mysecretkeymysecretkeymysecretkeymysecretkey";
-
+    @Value("${jwt.secret}")
+    private String secretKey;
     public String generateToken(String email) {
 
         return Jwts.builder()
@@ -24,7 +23,7 @@ public class JwtUtil {
                 )
                 .signWith(
                         new SecretKeySpec(
-                                SECRET_KEY.getBytes(),
+                                secretKey.getBytes(),
                                 "HmacSHA256"
                         )
                 )
@@ -36,7 +35,7 @@ public class JwtUtil {
         Claims claims = Jwts.parser()
                 .verifyWith(
                         new javax.crypto.spec.SecretKeySpec(
-                                SECRET_KEY.getBytes(),
+                                secretKey.getBytes(),
                                 "HmacSHA256"
                         )
                 )
