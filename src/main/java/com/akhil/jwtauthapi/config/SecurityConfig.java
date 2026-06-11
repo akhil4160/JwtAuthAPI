@@ -54,9 +54,8 @@ public class SecurityConfig {
 
     CorsConfiguration configuration = new CorsConfiguration();
 
-    configuration.setAllowedOrigins(List.of(
-            "https://jwt-react-client.onrender.com"
-    ));
+    configuration.setAllowedOriginPatterns(List.of("*"));
+    configuration.setAllowCredentials(true);
 
     configuration.setAllowedMethods(List.of(
             "GET", "POST", "PUT", "DELETE", "OPTIONS"
