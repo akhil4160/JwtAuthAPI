@@ -49,6 +49,7 @@ public class AuthServiceImpl implements AuthService {
         userRepository.save(user);
 
         return new AuthResponse("User Registered Successfully", "USER");
+    }
 
     @Override
     public AuthResponse login(LoginRequest request) {
