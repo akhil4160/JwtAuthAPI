@@ -6,9 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.akhil.jwtauthapi.entity.User;
 import com.akhil.jwtauthapi.repository.UserRepository;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @RestController
 public class UserController {
 
@@ -17,7 +14,7 @@ public class UserController {
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-    
+
     @GetMapping("/api/user/me")
     public User currentUser(Authentication authentication) {
 

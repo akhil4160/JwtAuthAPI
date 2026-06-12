@@ -9,4 +9,5 @@ public interface UserRepository
 
     Optional<User> findByEmail(String email);
 
+    long countByRole(String role);
 }

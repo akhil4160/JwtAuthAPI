@@ -48,7 +48,10 @@ public class AuthServiceImpl implements AuthService {
 
         userRepository.save(user);
 
-        return new AuthResponse("User Registered Successfully", "USER");
+        return new AuthResponse(
+                "User Registered Successfully",
+                "USER"
+        );
     }
 
     @Override
@@ -68,11 +71,8 @@ public class AuthServiceImpl implements AuthService {
         String token = jwtUtil.generateToken(user.getEmail());
 
         return new AuthResponse(
-
                 token,
-
                 user.getRole()
-
         );
     }
     // redeploy trigger
