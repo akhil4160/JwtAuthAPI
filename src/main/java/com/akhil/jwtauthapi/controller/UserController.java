@@ -3,6 +3,8 @@ package com.akhil.jwtauthapi.controller;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.akhil.jwtauthapi.entity.User;
+import com.akhil.jwtauthapi.repository.UserRepository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,16 +12,17 @@ import java.util.Map;
 @RestController
 public class UserController {
 
+    private final UserRepository userRepository;
+
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    
     @GetMapping("/api/user/me")
-    public Map<String, Object> currentUser(
-            Authentication authentication
-    ) {
+    public User currentUser(Authentication authentication) {
 
-        Map<String, Object> response = new HashMap<>();
-
-        response.put("email", authentication.getName());
-        response.put("roles", authentication.getAuthorities());
-
-        return response;
+        return userRepository
+                .findByEmail(authentication.getName())
+                .orElseThrow(() -> new RuntimeException("User Not Found"));
     }
 }
