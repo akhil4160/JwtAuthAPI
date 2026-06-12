@@ -1,109 +1,148 @@
-# JWT Authentication & User Management API
+# JwtAuthAPI
 
-A secure REST API built using Spring Boot, Spring Security, JWT Authentication, and MySQL. The application supports user registration, login, role-based authorization, and complete user management functionality for administrators.
+A production-ready Spring Boot REST API implementing JWT Authentication, Role-Based Access Control (RBAC), and User Management features.
+
+## Live API
+
+https://jwtauthapi-4rsw.onrender.com
+
+---
 
 ## Features
 
 ### Authentication
+
 - User Registration
 - User Login
 - JWT Token Generation
-- JWT Token Validation
 - BCrypt Password Encryption
 
+### Authorization
+
+- USER Role
+- ADMIN Role
+- Role-Based Access Control (RBAC)
+- Protected Endpoints
+
 ### User Features
+
 - View Current User Profile
+- Secure Authentication
 
 ### Admin Features
-- View All Users
-- Change User Name
+
+- Get All Users
+- Update User Name
 - Change User Role
 - Reset User Password
 - Delete User
+- User Statistics Support
 
 ### Security
-- Spring Security Integration
-- Role-Based Access Control (ADMIN / USER)
+
+- Spring Security
 - JWT Authentication Filter
-- Protected Endpoints
+- Password Encryption
+- Protected REST APIs
 
-### Database
-- MySQL Integration
-- Spring Data JPA
-- Hibernate ORM
-
-### Error Handling
-- Global Exception Handling
+---
 
 ## Tech Stack
 
-- Java
+- Java 21
 - Spring Boot
 - Spring Security
 - Spring Data JPA
 - Hibernate
-- JWT (JJWT)
+- JWT
 - MySQL
 - Maven
+- Render
+
+---
 
 ## API Endpoints
 
 ### Authentication
 
-**POST** `/api/auth/register`  
-Register a new user.
+POST /api/auth/register
 
-**POST** `/api/auth/login`  
-Authenticate user and generate JWT token.
+POST /api/auth/login
 
 ### User
 
-**GET** `/api/user/me`  
-Get currently authenticated user details.
+GET /api/user/me
 
 ### Admin
 
-**GET** `/api/admin/users`  
-Get all users.
+GET /api/admin
 
-**PUT** `/api/admin/users/{id}/name`  
-Update user name.
+GET /api/admin/users
 
-**PUT** `/api/admin/users/{id}/role`  
-Change user role.
+PUT /api/admin/users/{id}
 
-**PUT** `/api/admin/users/{id}/password`  
-Reset user password.
+PUT /api/admin/users/{id}/role
 
-**DELETE** `/api/admin/users/{id}`  
-Delete user.
+PUT /api/admin/users/{id}/password
+
+DELETE /api/admin/users/{id}
+
+---
 
 ## Project Structure
 
-controller/  
-service/  
-repository/  
-entity/  
-dto/  
-security/  
-config/  
-util/  
-exception/
+src/main/java/com/akhil/jwtauthapi
 
-## Authentication Flow
+- controller
+- service
+- repository
+- entity
+- dto
+- security
+- config
+- util
 
-User Login  
-↓  
-JWT Generated  
-↓  
-Token Sent In Authorization Header  
-↓  
-JWT Filter Validates Token  
-↓  
-SecurityContext Updated  
-↓  
-Protected Endpoint Access Granted
+---
+
+## Key Learnings
+
+- Spring Security
+- JWT Authentication
+- Role-Based Authorization
+- REST API Development
+- DTO Design
+- MySQL Integration
+- API Deployment
+- Git Rebase Conflict Resolution
+- Production Debugging
+
+---
+
+## Run Locally
+
+### Clone Repository
+
+git clone https://github.com/akhil4160/JwtAuthAPI.git
+
+### Configure Environment Variables
+
+SPRING_DATASOURCE_URL
+
+SPRING_DATASOURCE_USERNAME
+
+SPRING_DATASOURCE_PASSWORD
+
+JWT_SECRET
+
+### Run
+
+./mvnw spring-boot:run
+
+---
 
 ## Author
 
 Akhil Agrawal
+
+GitHub:
+https://github.com/akhil4160
