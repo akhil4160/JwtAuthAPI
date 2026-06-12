@@ -129,4 +129,25 @@ public class AdminController {
 
         return "Password Updated";
     }
+
+    @PutMapping("/api/admin/users/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String updateUser(
+
+            @PathVariable Long id,
+
+            @RequestBody UserResponse request
+
+    ) {
+
+        User user = userRepository
+                .findById(id)
+                .orElseThrow();
+
+        user.setName(request.getName());
+
+        userRepository.save(user);
+
+        return "User Updated";
+    }
 }
